@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Quote Generator | FBT</title>
+  
+  <!-- Hai, kalau kamu nemu ini berarti kamu jago ngoprek -->
+ <!-- cek teliti siapa tahu ada info tentang ???? -->
+  
+  <!-- SEO meta -->
+  <meta name="description" content="Kumpulan kata-kata singkat yang hangat dan menyemangati, cocok buat nemenin hari kamu.">
+  <meta name="author" content="FBT031211">
+
+  <!-- Open Graph (untuk share medsos) -->
+  <meta property="og:title" content="Quote Generator">
+  <meta property="og:description" content="Kumpulan kata-kata singkat yang hangat dan menyemangati, cocok buat nemenin hari kamu.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fbt031211.github.io/qg">
+  <meta property="og:image" content="-">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quote Generator">
+  <meta name="twitter:description" content="Kumpulan kata-kata singkat yang hangat dan menyemangati, cocok buat nemenin hari kamu.">
+  <meta name="twitter:image" content="-">
+
+  <!-- Favicon (isi sendiri) -->
+  <link rel="icon" href="https://iili.io/KdfLmDx.png" type="image/png">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f0f0f0;
+      margin: 0;
+    }
+    #quote-box {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      display: inline-block;
+      max-width: 90%;
+      width: auto;
+      word-wrap: break-word;
+      box-sizing: border-box;
+    }
+    #quote {
+      margin: 0; 
+      line-height: 1.6;
+      white-space: pre-wrap; /* jaga spasi & line break */
+      color: #000;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #fafa18;
+      color: #262624;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #fafa03;
+    }
+  </style>
+</head>
+<body>
+  <div id="quote-box">
+    <p id="quote">hello</p>
+    <button onclick="newQuote()">:)</button>
+  </div>
+<!-- cek lagi siapa tahu ada info tentang 7161 -->
+  <script>
+    const quotes = [
+      "Belajar sedikit tiap hari lebih baik daripada banyak sekaligus.",
+      "Kegagalan itu latihan menuju keberhasilan.",
+      "Kesalahan kecil adalah tanda kamu sedang maju.",
+      "Setiap langkah adalah bagian dari cerita besar perjalananmu.",
+      "Belajar itu butuh sabar, setiap proses ada waktunya.",
+      "Kegagalan adalah guru paling jujur.",
+      "Jangan tunggu sempurna, mulai aja dulu :)",
+      "Setiap usaha kecil tetap membawa perubahan besar.",
+      "Hari ini kesempatan baru untuk mencoba lagi.",
+      "Orang bijak belajar ketika mereka bisa, orang bodoh menunggu sampai mereka harus.",
+      "Keberanian bukan tanpa rasa takut, tapi tetap melangkah meski takut.",
+      "Senyum kecil bisa bikin hari lebih ringan.",
+      "Semua orang pernah jatuh, yang penting bangkit lagi.",
+      "Belajar adalah investasi yang tak pernah rugi.",
+      "Langkah kecil tetap lebih baik daripada tidak melangkah sama sekali.",
+      "Waktu terbaik untuk mulai adalah sekarang.",
+      "Jangan bandingkan dirimu dengan orang lain, fokus pada progresmu.",
+      "Ketenangan datang dari hati yang sabar.",
+      "Mimpi besar dimulai dari keberanian untuk memulai hal kecil.",
+      "Kesulitan hari ini bisa jadi kekuatan besok.",
+      "Setiap hari adalah halaman baru dalam cerita hidupmu."
+    ];
+
+    let lastIndex = -3;
+
+    function typeWriterEffect(text, element, speed = 60) {
+      element.textContent = "";
+      let i = 0;
+      function typing() {
+        if (i < text.length) {
+          element.textContent += text[i];
+          i++;
+          setTimeout(typing, speed);
+        }
+      }
+      typing();
+    }
+<!-- 7161 adalah "JVK (fdul qdpd sdqmdqjqbd)" -->
+<!-- Caesar Said move 3 times -->
+    function deleteEffect(element, callback, speed = 15) {
+      let text = element.textContent;
+      let i = text.length;
+      function deleting() {
+        if (i > 0) {
+          element.textContent = text.substring(0, i - 1);
+          i--;
+          setTimeout(deleting, speed);
+        } else {
+          callback(); // setelah selesai hapus, jalankan callback
+        }
+      }
+      deleting();
+    }
+
+    function newQuote() {
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * quotes.length);
+      } while (randomIndex === lastIndex);
+      lastIndex = randomIndex;
+
+      const quoteElement = document.getElementById("quote");
+      const newText = quotes[randomIndex];
+
+      // Hapus dulu, lalu ketik baru
+      deleteEffect(quoteElement, () => {
+        typeWriterEffect(newText, quoteElement);
+      });
+    }
+  </script>
+</body>
+</html>
