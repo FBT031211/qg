@@ -5,13 +5,13 @@
   <title>Quote Generator | FBT</title>
   
   <!-- Hai, kalau kamu nemu ini berarti kamu jago ngoprek -->
- <!-- cek teliti siapa tahu ada info tentang ???? -->
-  
+  <!-- cek teliti siapa tahu ada info tentang ???? -->
+
   <!-- SEO meta -->
   <meta name="description" content="Kumpulan kata-kata singkat yang hangat dan menyemangati, cocok buat nemenin hari kamu.">
   <meta name="author" content="FBT031211">
 
-  <!-- Open Graph (untuk share medsos) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Quote Generator">
   <meta property="og:description" content="Kumpulan kata-kata singkat yang hangat dan menyemangati, cocok buat nemenin hari kamu.">
   <meta property="og:type" content="website">
@@ -24,8 +24,11 @@
   <meta name="twitter:description" content="Kumpulan kata-kata singkat yang hangat dan menyemangati, cocok buat nemenin hari kamu.">
   <meta name="twitter:image" content="-">
 
-  <!-- Favicon (isi sendiri) -->
+  <!-- Favicon -->
   <link rel="icon" href="https://iili.io/KdfLmDx.png" type="image/png">
+
+  <!-- Responsive viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
@@ -37,29 +40,34 @@
       height: 100vh;
       background: #f0f0f0;
       margin: 0;
+      padding: 10px;
     }
+
     #quote-box {
       background: white;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
       text-align: center;
-      display: inline-block;
-      max-width: 90%;
-      width: auto;
+      width: 100%;
+      max-width: 500px;
       word-wrap: break-word;
       box-sizing: border-box;
+      transition: all 0.3s ease;
     }
+
     #quote {
-      margin: 0; 
+      margin: 0;
       line-height: 1.6;
-      white-space: pre-wrap; /* jaga spasi & line break */
+      white-space: pre-wrap;
       color: #000;
       opacity: 1;
       transition: opacity 0.5s;
+      font-size: 1rem;
     }
+
     button {
-      margin-top: 15px;
+      margin-top: 18px;
       padding: 10px 20px;
       border: none;
       border-radius: 8px;
@@ -67,9 +75,25 @@
       color: #262624;
       font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
+
     button:hover {
       background: #fafa03;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      #quote-box {
+        padding: 20px;
+      }
+      #quote {
+        font-size: 0.95rem;
+      }
+      button {
+        font-size: 15px;
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
@@ -78,7 +102,8 @@
     <p id="quote">hello</p>
     <button onclick="newQuote()">:)</button>
   </div>
-<!-- cek lagi siapa tahu ada info tentang 7161 -->
+
+  <!-- cek teliti siapa tahu ada info tentang 7161 -->
   <script>
     const quotes = [
       "Belajar sedikit tiap hari lebih baik daripada banyak sekaligus.",
@@ -118,8 +143,10 @@
       }
       typing();
     }
-<!-- 7161 adalah "JVK (fdul qdpd sdqmdqjqbd)" -->
-<!-- Caesar Said move 3 times -->
+
+    <!-- 7161 adalah "JVK (fdul qdpd sdqmdqjqbd)" -->
+    <!-- Ceasar Said move 3 times -->
+
     function deleteEffect(element, callback, speed = 15) {
       let text = element.textContent;
       let i = text.length;
@@ -129,7 +156,7 @@
           i--;
           setTimeout(deleting, speed);
         } else {
-          callback(); // setelah selesai hapus, jalankan callback
+          callback();
         }
       }
       deleting();
@@ -145,7 +172,6 @@
       const quoteElement = document.getElementById("quote");
       const newText = quotes[randomIndex];
 
-      // Hapus dulu, lalu ketik baru
       deleteEffect(quoteElement, () => {
         typeWriterEffect(newText, quoteElement);
       });
